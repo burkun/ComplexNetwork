@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index>
+	<title>Demos 的源代码</title>
+	<nodes>
+		<node label="src">
+			<node icon="packageIcon" label="helper" expanded="true">
+				<node icon="actionScriptIcon" label="Calculation.as" url="source/helper/Calculation.as.html"/>
+				<node icon="mxmlIcon" label="ChartDegree.mxml" url="source/helper/ChartDegree.mxml.html"/>
+				<node icon="actionScriptIcon" label="Cloneable.as" url="source/helper/Cloneable.as.html"/>
+				<node icon="actionScriptIcon" label="DataSet.as" url="source/helper/DataSet.as.html"/>
+				<node icon="mxmlIcon" label="DataView.mxml" url="source/helper/DataView.mxml.html"/>
+				<node icon="mxmlIcon" label="DetialView.mxml" url="source/helper/DetialView.mxml.html"/>
+				<node icon="actionScriptIcon" label="ElementGenerater.as" url="source/helper/ElementGenerater.as.html"/>
+				<node icon="actionScriptIcon" label="EventGenerater.as" url="source/helper/EventGenerater.as.html"/>
+				<node icon="actionScriptIcon" label="ExcelReader.as" url="source/helper/ExcelReader.as.html"/>
+				<node icon="actionScriptIcon" label="Global.as" url="source/helper/Global.as.html"/>
+				<node icon="mxmlIcon" label="InfoWindow.mxml" url="source/helper/InfoWindow.mxml.html"/>
+				<node icon="actionScriptIcon" label="LayoutGenerater.as" url="source/helper/LayoutGenerater.as.html"/>
+				<node icon="mxmlIcon" label="NodeView.mxml" url="source/helper/NodeView.mxml.html"/>
+				<node icon="actionScriptIcon" label="OpenFileBunding.as" url="source/helper/OpenFileBunding.as.html"/>
+				<node icon="mxmlIcon" label="PlotDotChart.mxml" url="source/helper/PlotDotChart.mxml.html"/>
+				<node icon="mxmlIcon" label="Point.mxml" url="source/helper/Point.mxml.html"/>
+				<node icon="actionScriptIcon" label="SaveFileBunding.as" url="source/helper/SaveFileBunding.as.html"/>
+				<node icon="actionScriptIcon" label="SimulationCalculation.as" url="source/helper/SimulationCalculation.as.html"/>
+				<node icon="actionScriptIcon" label="Simulations.as" url="source/helper/Simulations.as.html"/>
+				<node icon="actionScriptIcon" label="SuperLine.as" url="source/helper/SuperLine.as.html"/>
+				<node icon="actionScriptIcon" label="Util.as" url="source/helper/Util.as.html"/>
+			</node>
+			<node icon="mxmlAppIcon" selected="true" label="Demos.mxml" url="source/Demos.mxml.html"/>
+		</node>
+	</nodes>
+	<zipfile label="下载源代码（ZIP，25 KB）" url="Demos.zip">
+	</zipfile>
+	<sdklink label="下载 Flex SDK" url="http://www.adobe.com/go/flex451_sdk_download_zh_CN">
+	</sdklink>
+</index>
