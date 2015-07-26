@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"   implements="helper.Cloneable" depth="10" mouseEnabledWhereTransparent="false" mouseEnabled="true" doubleClickEnabled="true"
+		 mouseChildren="false" buttonMode="true" toolTip="双击来发现更多！">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+		<fx:uint id="fillColor">0x000000</fx:uint>
+		<fx:uint id="fillStroke">0xcccccc</fx:uint>
+		<fx:String id="label">0</fx:String>
+		<fx:uint id="labelColor">0</fx:uint>
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import helper.Cloneable;
+			
+			private var _dataIndex:uint = uint.MAX_VALUE;//与数据相关的索引
+			private var _dataSet:DataSet = null; //每个点都有一个dataSet的引用
+			private var _alginMentIndex:uint; //为布局设立
+			private var _dataSheetIndex:uint;
+			
+			private var _lineArray:Array = new Array();//记录与改点相连的每个线对象
+			
+			
+			public function get alginMentIndex():uint{
+				return _alginMentIndex;
+			}
+			public function set alginMentIndex(value:uint):void{
+				_alginMentIndex = value;
+			}
+			
+			public function get dataSheetIndex():uint{
+				return _dataSheetIndex;
+			}
+			public function set dataSheetIndex(value:uint):void{
+				_dataSheetIndex = value;
+			}
+			public function get lines():Array{
+				return _lineArray;
+			}
+			public function get realX():Number{
+				return this.x+this.width/2;
+			}
+			public function get realY():Number{
+				return this.y+this.height/2;
+			}
+			public function set realX(x:Number):void{
+				this.x = x+pointSize/2;
+			}
+			public function set realY(y:Number):void{
+				this.y = y+pointSize/2;
+			}
+			
+			private var _pointSize:Number = 18;
+			public function get pointSize():Number{
+				return _pointSize;
+			}
+			public function set pointSize(v:Number):void{
+				_pointSize = v;
+				update();
+			}
+			
+			private function update():void{
+				this.width = pointSize*1.2;
+				this.height =  pointSize*1.2;
+				ell.width = pointSize;
+				ell.height = pointSize;
+				scs.weight = pointSize*0.1;
+			}
+			
+			public function get dataIndex():uint{
+				return _dataIndex;
+			}
+			public function get dataSet():DataSet{
+				return _dataSet;
+			}
+			
+			public function set dataIndex(value:uint):void{
+				_dataIndex = value;
+			}
+			public function set dataSet(value:DataSet):void{
+				_dataSet = value;
+			}
+			
+			public function clone():Cloneable
+			{
+				var p:helper.Point = new helper.Point();
+				p.pointSize = this.pointSize;
+				p.fillColor = this.fillColor;
+				p.fillStroke = this.fillStroke;
+				p.label = this.label;
+				p.labelColor = this.labelColor;
+				return p;
+			}
+			
+			
+		]]>
+	</fx:Script>
+	<s:Ellipse  verticalCenter="0" horizontalCenter="0" id="ell">
+		<s:fill>
+			<s:SolidColor color="{fillColor}">
+			</s:SolidColor>
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke color="{fillStroke}" id="scs">
+				
+			</s:SolidColorStroke>
+		</s:stroke>
+	</s:Ellipse>
+	<s:Group verticalCenter="0" horizontalCenter="0" top="0" left="0" right="0" bottom="0" >
+		<s:Label id="labelText" text="{label}" fontSize="12" color="{labelColor}" fontWeight="bold" verticalAlign="middle" horizontalCenter="0" verticalCenter="0" mouseEnabled="false">
+		</s:Label>
+	</s:Group>
+</s:Group>

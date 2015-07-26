@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="300" horizontalCenter="0">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			private var  _dataSets:Array;
+			[Bindable]
+			private var dataSource:ArrayCollection = new ArrayCollection();
+			public function set data(dataSets:Array):void{
+				_dataSets = dataSets;
+				initDataSource();
+			}
+			private function initDataSource():void{
+				var arr:ArrayCollection = new ArrayCollection();
+				for(var i:uint=0;i<_dataSets.length;i++){
+					var dataset:DataSet = _dataSets[i] as DataSet;
+					var avgPathLen:String = "";
+					for(var j:uint=0;j<dataset.avgSPL.length;j++){
+						avgPathLen+="Sub-Graph"+(j+1)+": "+((dataset.avgSPL[j] as Number).toFixed(2))+"  ";
+					}
+					if(dataset.avgSPL.length==1){
+						arr.addItem({dataName:dataset.name,avgSPL:(dataset.avgSPL[0] as Number).toFixed(2),coreness:dataset.graphCoreness,coeffi:(dataset.totalCoeffi as Number).toFixed(3)});
+					}else{
+						arr.addItem({dataName:dataset.name,avgSPL:avgPathLen,coreness:dataset.graphCoreness,coeffi:(dataset.totalCoeffi as Number).toFixed(3)});
+					}
+				}
+				dataSource =arr;
+			}
+			
+		]]>
+	</fx:Script>
+	<s:DataGrid dataProvider="{dataSource}" width="100%" horizontalCenter="0">
+		<s:columns> 
+			<s:ArrayList>
+				<s:GridColumn dataField="dataName"/>
+				<s:GridColumn dataField="coreness"/> 
+				<s:GridColumn dataField="coeffi"/> 
+				<s:GridColumn dataField="avgSPL"/> 
+			</s:ArrayList>
+		</s:columns>
+	</s:DataGrid>
+</s:Group>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:helper="helper.*" width="100%">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			private var _nodeData:Array = null;
+			private var _lineData:Array = null;
+			[Bindable]
+			public var viewTitle:String = "";
+			public function setLabelInfo(benC:uint,endC:uint,beginValue:uint,endValue:uint,title:String):void{
+				info.beginColor = benC;
+				info.endColor = endC;
+				info.beginValue = beginValue;
+				info.endValue = endValue;
+				info.title = title;
+			}
+			public function get nodeData():Array{
+				return _nodeData;
+			}
+			public function get lineData():Array{
+				return _lineData;
+			}
+			
+			
+			
+			public function setNodeLine(n:Array,l:Array):void{
+				_nodeData = n;
+				_lineData = l;
+				var i:uint = 0;
+				for(i=0;i<_nodeData.length;i++){
+					addHoverEvent(_nodeData[i]);
+					canvans.addElement(_nodeData[i]);
+				}
+				for(i=0;i<_lineData.length;i++){
+					canvans.addElement(_lineData[i]);
+				}
+				info.visible = true;
+				detial.visible = true;
+			}
+			
+			private function addHoverEvent(p:helper.Point):void{
+				p.addEventListener(MouseEvent.ROLL_OVER,onMouseOver);
+				p.addEventListener(MouseEvent.ROLL_OUT,onMouseOut);
+			}
+			protected function onMouseOver(event:MouseEvent):void{
+				var p:helper.Point = event.target as helper.Point;
+				detial.coreness = p.dataSet.coreness[p.dataIndex].toString();
+				detial.degree = p.dataSet.degree[p.dataIndex].toString();
+				detial.avgPathLen = (p.dataSet.nodeAvgSPL[p.dataIndex] as Number).toFixed(3);
+				detial.clusterCoeffi = (p.dataSet.coeffi[p.dataIndex] as Number).toFixed(3);
+			}
+			protected function onMouseOut(event:MouseEvent):void{
+				detial.coreness = "";
+				detial.degree = "";
+				detial.avgPathLen = "";
+				detial.clusterCoeffi = "";
+			}
+		]]>
+	</fx:Script>
+	<helper:InfoWindow right="150" bottom="110" id="info" visible="false">		
+	</helper:InfoWindow>
+	<helper:DetialView right="50" top="150" id="detial" visible="false">
+	</helper:DetialView>
+	<s:Group id="canvans" top="0" left="0" height="730">
+		
+	</s:Group>
+	<s:Group width="100%" height="30" left="0" bottom="0">
+		<s:Label text="{viewTitle}" fontWeight="bold" fontStyle="italic" fontSize="20" horizontalCenter="-40">
+			
+		</s:Label>
+	</s:Group>
+</s:Group>

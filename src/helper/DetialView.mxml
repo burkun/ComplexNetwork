@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="180" height="100">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			public var coreness:String="";
+			[Bindable]
+			public var avgPathLen:String = "";
+			[Bindable]
+			public var degree:String = "";
+			[Bindable]
+			public var clusterCoeffi:String = "";
+			
+		]]>
+	</fx:Script>
+	<s:TextArea fontSize="14" lineHeight="20" verticalAlign="middle" editable="false"  width="200" height="100" borderAlpha="0.5">
+		<s:div>
+			<s:span fontStyle="italic"> Coreness:
+			</s:span>
+			<s:span text="{coreness}">
+			</s:span>
+		</s:div>
+		<s:div>
+			<s:span fontStyle="italic"> AvgShortestPathLen:
+			</s:span>
+			<s:span text="{avgPathLen}">
+			</s:span>
+		</s:div>
+		<s:div>
+			<s:span fontStyle="italic"> Degree:
+			</s:span>
+			<s:span text="{degree}">
+			</s:span>
+		</s:div>
+		<s:div>
+			<s:span> Clustering Coefficient
+			</s:span>
+			<s:span text="{clusterCoeffi}">
+			</s:span>
+		</s:div>
+	</s:TextArea>
+</s:Group>
